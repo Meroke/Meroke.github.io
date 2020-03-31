@@ -75,6 +75,121 @@
     
     
     
+    <article id="post-Math" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/31/Math/"
+    >Math</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/31/Math/" class="article-date">
+  <time datetime="2020-03-31T13:20:33.897Z" itemprop="datePublished">2020-03-31</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="一、空间直线及其方程"><a href="#一、空间直线及其方程" class="headerlink" title="一、空间直线及其方程"></a><strong>一、空间直线及其方程</strong></h1><ul>
+<li><p><strong>1.一般方程</strong></p>
+<ul>
+<li>$$<br>\begin{cases}<br>{A_1x+B_1y+C_1+D=0}\<br>{A_2x+B_2y+C_2+D=0}<br>\end{cases}<br>$$</li>
+</ul>
+</li>
+<li><p><strong>2.对称式方程</strong></p>
+</li>
+<li><p>$$<br>\frac{x-x_0}{m}=<br>\frac{y-y_0}{n}=<br>\frac{z-z_0}{p}<br>$$</p>
+<p>[^注记]: 方向向量（m , n , p),直线含点（x_0 ,y_0, z_0)</p>
+<ul>
+<li><p>若m，n，p中任意一个为0</p>
+</li>
+<li><p>例如m=0，则方程组为 </p>
+</li>
+<li><p>$$<br>\begin {cases}<br>x-x_0=0\<br>\frac{y-y_0}{n}=<br>\frac{z-z_0}{p}<br>\end{cases}<br>$$</p>
+</li>
+<li><p>若m,n,p任意两个为0</p>
+</li>
+<li><p>例如m=n=0，则方程组为</p>
+</li>
+<li><p>$$<br>\begin{cases}<br>x-x_0=0\<br>y-y_0=0<br>\end{cases}<br>$$</p>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2 id="二、向量方程"><a href="#二、向量方程" class="headerlink" title="二、向量方程"></a>二、向量方程</h2><p>组成平面的两个要素：已知点（x<del>0</del> ，y<del>0</del> ,z<del>0</del>),                   法向量n(A,B,C),组成A(x-x<del>0</del>)+B(y-y<del>0</del>)+C(z-z<del>0</del>)=0</p>
+<p>1.一平面通过两点M<del>1</del>(1,1,1)和M<del>2</del>(0,1,-1)且垂直于平面x+y+z=0,求方程</p>
+<p>点乘法：设已知平面n<del>1</del> =(1,1,1),待求平面n<del>2</del> =(a,b,c), </p>
+<p>$\vec n_2 = \vec n_1 \cdot \vec M_1 \vec M_2 $ =(-2,1,1)</p>
+<p>将M<del>1</del> 带入待求方程：-2（x-1) +(y-1) + (z-1) = 0</p>
+<p>结果：2x - y - z=0</p>
+<h2 id="三、曲面"><a href="#三、曲面" class="headerlink" title="三、曲面"></a>三、曲面</h2><p>绕某轴转，那个变量就不变，另一个变量改为剩下变量的平方和这个变量的平方的和开根。</p>
+<p>旋转曲面必有平方和，柱面只有两个变量</p>
+<h2 id="四、隐函数"><a href="#四、隐函数" class="headerlink" title="四、隐函数"></a>四、隐函数</h2><p>①隐函数一阶求导：</p>
+<ul>
+<li>$\dfrac {dy}{dx} = - \dfrac {F_x}{F_y}$ </li>
+</ul>
+<p>②隐函数二阶求导，两种方法，大致类似：</p>
+<ul>
+<li><p>$\dfrac {d^2 y} {dx^2}= \dfrac {\delta}{\delta x }(- \dfrac {F_x}{F_y}) + \dfrac {\delta}{\delta y }(- \dfrac {F_x}{F_y})\dfrac {dy}{dx}$ </p>
+</li>
+<li><p>简洁法：$\dfrac {d^2 y} {dx^2}= \dfrac {\delta}{\delta x }(- \dfrac {F_x}{F_y})$ ,在计算过程中，会有$\dfrac {dy}{dx}$出现，此处不能直接为零，将一阶导数带进，即得二阶导数</p>
+<p>③方程组情况计算</p>
+</li>
+</ul>
+<h2 id="五、方向导数和梯度"><a href="#五、方向导数和梯度" class="headerlink" title="五、方向导数和梯度"></a>五、方向导数和梯度</h2><p>Z = f(x,y),   方向$\vec e =(cos \alpha , cos \beta)$ </p>
+<p>方向导数=$ \dfrac {\delta z}{\delta l} =\dfrac {\delta z}{\delta x} cos \alpha  + \dfrac {\delta z}{\delta y} cos \beta \=(\dfrac{\delta z}{\delta x}, \dfrac{\delta z}{\delta y})(cos\alpha, cos\beta)\= (\sqrt{\dfrac {\delta z}{\delta x})^2+(\dfrac {\delta z}{\delta y} )^2} \cdot 1  \cdot cos\theta$</p>
+<p>梯度  $grad f= (\dfrac{\delta z}{\delta x}, \dfrac{\delta z}{\delta y})$</p>
+<p>梯度的模，$cos\theta=1$ 即方向导数最大值</p>
+<h2 id="六、极大小值"><a href="#六、极大小值" class="headerlink" title="六、极大小值"></a>六、极大小值</h2><p>无条件极值</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-article-title" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
