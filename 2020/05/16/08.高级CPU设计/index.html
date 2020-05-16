@@ -86,13 +86,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="08.高级CPU设计早期计算机通过减少晶体管的切换时间来提速，比如逻辑门和ALU的产生。但新技术使得性能得到了更大的提升，英特尔 4004，第一个集成CPU ，46条指令。 问题：超高的时钟速度，使得指令运行变快，但是向CPU传递数据的缓慢成了瓶颈，即RAM传递速度慢。 RAM是独立于CPU的组件，需要“总线”来传递数据。 解决延迟的方法：在CPU内加上一点RAM，称作“缓存”，一般只有KB或MB">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155050385.png">
-<meta property="og:image" content="c:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155151448.png">
+<meta property="og:image" content="https://gitee.com/mmeroke/picture_bed/raw/master/img/20200516205645">
+<meta property="og:image" content="https://gitee.com/mmeroke/picture_bed/raw/master/img/20200516205607">
 <meta property="article:published_time" content="2020-05-16T07:58:08.245Z">
-<meta property="article:modified_time" content="2020-05-16T08:07:01.179Z">
+<meta property="article:modified_time" content="2020-05-16T12:56:49.913Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155050385.png">
+<meta name="twitter:image" content="https://gitee.com/mmeroke/picture_bed/raw/master/img/20200516205645">
 
 
 
@@ -307,14 +307,14 @@
 <p>RAM是独立于CPU的组件，需要“总线”来传递数据。</p>
 <p>解决延迟的方法：在CPU内加上一点RAM，称作“缓存”，一般只有KB或MB。</p>
 <p>原理：CPU从RAM拿数据，RAM可以传输一批，而不是一个，虽然多花一点时间，但是数据存储在缓存后，CPU直接从缓存内拿数据，加速了后面的处理。更通俗的说，缓存比RAM更靠近CPU，处理速度更快。而且CPU也可以直接在缓存内存储数据，这样取用也相对方便。</p>
-<p><img src="C:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155050385.png" alt="image-20200516155050385"></p>
+<p><img src="https://gitee.com/mmeroke/picture_bed/raw/master/img/20200516205645" alt="在这里插入图片描述"></p>
 <p>&lt;如果想要的数据在缓存，叫 缓存命中（cache hit）&gt;</p>
 <p>&lt;如果想要的数据不在缓存，叫 缓存未命中(cache miss)&gt;</p>
 <p>但是这样缓存和RAM不一致，需要有标记记录，之后同步。在缓存内有一个特殊标记==“脏位（dirty bit）”==.</p>
 <p>&lt;同步一般发生在 当缓存满了而 CPU 又要缓存时,在清理缓存腾出空间之前，会先检查 “脏位”,如果是”脏”的, 在加载新内容之前, 会把数据写回 RAM&gt;</p>
 <p>另一种提升性能的方法是“指令流水线”，即fetch,decode,execute(取值，解码，执行，这三个即一条指令)需要3个时钟周期，完成了一条再进行下一条。</p>
 <p>但进一步提高效率，可以用==“并行处理（parallelize）”==，在取值完成后，下一轮的fetch在这一轮的decode同时进行，下一轮decode在这一轮的execute同时进行。这样1个时钟周期可以执行1个指令。</p>
-<p><img src="C:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155151448.png" alt="image-20200516155151448"></p>
+<p><img src="https://gitee.com/mmeroke/picture_bed/raw/master/img/20200516205607" alt="在这里插入图片描述"></p>
 <p>但这有一个问题，指令之间的依赖关系。当你在读取某个数据，但是同时上一个指令正在修改它，那么读取的其实是旧数据(可能你想要的是修改后的数据）。&lt;因此流水线处理器  要先弄清数据依赖性,必要时停止流水线，避免出问题&gt;</p>
 <p>在高端CPU中，会有动态排序的有依赖关系的指令，来最小化流水线停工的时间，叫==“乱序执行（out-of-order execution）”==</p>
 <p>第二个问题是“条件跳转”，简单的流水线处理器，看到jump指令需要等待条件值，才能将指令放入流水线。等待的时间和放置指令的时间是巨大的浪费，把jump想成岔路口，高端处理器会通过猜测前进方向，提前把指令放入流水线，这叫==“推测执行（speculative execution）”==，如果是正确的，则立马执行，这样就减少了放入指令的时间，如果不正确则清空流水线重来。而且CPU厂商开发了==“分支预测（branch prediction）”==，使得正确率超过90%。</p>
