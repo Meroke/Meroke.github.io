@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="08.高级CPU设计早期计算机通过减少晶体管的切换时间来提速，比如逻辑门和ALU的产生。但新技术使得性能得到了更大的提升，英特尔 4004，第一个集成CPU ，46条指令。 问题：超高的时钟速度，使得指令运行变快，但是向CPU传递数据的缓慢成了瓶颈，即RAM传递速度慢。 RAM是独立于CPU的组件，需要“总线”来传递数据。 解决延迟的方法：在CPU内加上一点RAM，称作“缓存”，一般只有KB或MB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="08.高级CPU设计">
+<meta property="og:url" content="http://yoursite.com/2020/05/16/08.%E9%AB%98%E7%BA%A7CPU%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="08.高级CPU设计早期计算机通过减少晶体管的切换时间来提速，比如逻辑门和ALU的产生。但新技术使得性能得到了更大的提升，英特尔 4004，第一个集成CPU ，46条指令。 问题：超高的时钟速度，使得指令运行变快，但是向CPU传递数据的缓慢成了瓶颈，即RAM传递速度慢。 RAM是独立于CPU的组件，需要“总线”来传递数据。 解决延迟的方法：在CPU内加上一点RAM，称作“缓存”，一般只有KB或MB">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155050385.png">
+<meta property="og:image" content="c:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155151448.png">
+<meta property="article:published_time" content="2020-05-16T07:58:08.245Z">
+<meta property="article:modified_time" content="2020-05-16T08:07:01.179Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CMeroke%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200516155050385.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/16/08.高级CPU设计/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>08.高级CPU设计 | Hexo</title>
   
 
 
@@ -140,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +220,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/16/08.%E9%AB%98%E7%BA%A7CPU%E8%AE%BE%E8%AE%A1/" itemprop="url">08.高级CPU设计</a></h1>
+          <h1 class="post-title" itemprop="name headline">08.高级CPU设计</h1>
         
 
         <div class="post-meta">
@@ -298,9 +302,7 @@
       
 
       
-        
-          
-            <h2 id="08-高级CPU设计"><a href="#08-高级CPU设计" class="headerlink" title="08.高级CPU设计"></a>08.高级CPU设计</h2><p>早期计算机通过减少晶体管的切换时间来提速，比如逻辑门和ALU的产生。但新技术使得性能得到了更大的提升，英特尔 4004，第一个集成CPU ，46条指令。</p>
+        <h2 id="08-高级CPU设计"><a href="#08-高级CPU设计" class="headerlink" title="08.高级CPU设计"></a>08.高级CPU设计</h2><p>早期计算机通过减少晶体管的切换时间来提速，比如逻辑门和ALU的产生。但新技术使得性能得到了更大的提升，英特尔 4004，第一个集成CPU ，46条指令。</p>
 <p>问题：超高的时钟速度，使得指令运行变快，但是向CPU传递数据的缓慢成了瓶颈，即RAM传递速度慢。</p>
 <p>RAM是独立于CPU的组件，需要“总线”来传递数据。</p>
 <p>解决延迟的方法：在CPU内加上一点RAM，称作“缓存”，一般只有KB或MB。</p>
@@ -318,8 +320,6 @@
 <p>第二个问题是“条件跳转”，简单的流水线处理器，看到jump指令需要等待条件值，才能将指令放入流水线。等待的时间和放置指令的时间是巨大的浪费，把jump想成岔路口，高端处理器会通过猜测前进方向，提前把指令放入流水线，这叫==“推测执行（speculative execution）”==，如果是正确的，则立马执行，这样就减少了放入指令的时间，如果不正确则清空流水线重来。而且CPU厂商开发了==“分支预测（branch prediction）”==，使得正确率超过90%。</p>
 <p>接着“超标量处理器”出现：1个时钟周期完成多个指令。在指令执行阶段，处理器中总有部分区域空闲，那么多条指令并行，那么就可以增加处理器各部分的使用率。</p>
 
-          
-        
       
     </div>
     
@@ -336,12 +336,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -351,10 +351,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -362,6 +363,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -382,8 +387,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -425,6 +439,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#08-高级CPU设计"><span class="nav-number">1.</span> <span class="nav-text">08.高级CPU设计</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -558,6 +588,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
